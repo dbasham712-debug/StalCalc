@@ -18,11 +18,13 @@ CONTAINER_CHOICES = [
     app_commands.Choice(name="BD6", value=2),
     app_commands.Choice(name="Trailblazer", value=3),
     app_commands.Choice(name="Chitin", value=4),
+    app_commands.Choice(name="SMC", value=5)
 ]
 MEDKIT_CHOICES = [
     app_commands.Choice(name="Blue Medkit", value=0),
     app_commands.Choice(name="STOMP", value=1),
     app_commands.Choice(name="STRIKE", value=2),
+    app_commands.Choice(name="Green Medkit", value=3)
 ]
 WEAPON_CHOICES = [
     app_commands.Choice(name="AK-15", value=0),
@@ -33,8 +35,7 @@ from stalcalc_core import (
     df_armors, df_containers, df_medkits, df_weapons,
     run_calc
 )
-GUILD_ID = 1419061442870644879
-#414969988374462466  # replace if needed
+GUILD_ID = 1234
 
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix="!", intents=intents)
@@ -150,4 +151,5 @@ if __name__ == "__main__":
     TOKEN = os.getenv("DISCORD_TOKEN")
 if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
+
 client.run(TOKEN)
