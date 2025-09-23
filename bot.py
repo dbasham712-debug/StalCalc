@@ -92,7 +92,7 @@ async def calc_cmd(
     use_buffs: app_commands.Choice[str],
     use_limits: app_commands.Choice[str],
 ):
-    await interaction.response.defer(thinking=True)
+    await interaction.response.defer(ephemeral=True, thinking=True)
 
     armor_idx     = armor.value
     container_idx = container.value
@@ -135,4 +135,5 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
 
