@@ -11,6 +11,8 @@ ARMOR_CHOICES = [
     app_commands.Choice(name="SBA", value=3),
     app_commands.Choice(name="M2", value=4),
     app_commands.Choice(name="Cent", value=5),
+    app_commands.Choice(name="Reiter", value=6),
+    app_commands.Choice(name="Punisher", value=7)
 ]
 CONTAINER_CHOICES = [
     app_commands.Choice(name="Barrel", value=0),
@@ -54,26 +56,6 @@ async def on_ready():
 def fmt_id_list(df, label_col: str) -> str:
     lines = [f"ID: {i+1} = {label_col.title()}: {name}" for i, name in enumerate(df[label_col].tolist())]
     return "```\n" + "\n".join(lines) + "\n```"
-
-# ---------- /armor ----------
-@client.tree.command(name="armor", description="Get IDs for armor", guild=discord.Object(id=GUILD_ID))
-async def armor_cmd(interaction: discord.Interaction):
-    await interaction.response.send_message(fmt_id_list(df_armors, "armor"), ephemeral=True)
-
-# ---------- /container ----------
-@client.tree.command(name="container", description="Get IDs for containers", guild=discord.Object(id=GUILD_ID))
-async def container_cmd(interaction: discord.Interaction):
-    await interaction.response.send_message(fmt_id_list(df_containers, "container"), ephemeral=True)
-
-# ---------- /medkit ----------
-@client.tree.command(name="medkit", description="Get IDs for medkits", guild=discord.Object(id=GUILD_ID))
-async def medkit_cmd(interaction: discord.Interaction):
-    await interaction.response.send_message(fmt_id_list(df_medkits, "name"), ephemeral=True)
-
-# ---------- /weapon ----------
-@client.tree.command(name="weapon", description="Get IDs for weapons", guild=discord.Object(id=GUILD_ID))
-async def weapon_cmd(interaction: discord.Interaction):
-    await interaction.response.send_message(fmt_id_list(df_weapons, "weapon"), ephemeral=True)
 
 # ---------- /calc ----------
 @client.tree.command(name="calc", description="Calculate artifact build", guild=discord.Object(id=GUILD_ID))
@@ -136,16 +118,16 @@ async def calc_cmd(
 
     MAX = 1900
     if len(output_text) <= MAX:
-        await interaction.followup.send(f"```\n{output_text}\n```")
+        await interaction.followup.send(f"```\n{output_text}\n```",ephemeral=True)
     else:
         buf, count = [], 0
         for line in output_text.splitlines(True):
             if count + len(line) > MAX:
-                await interaction.followup.send(f"```\n{''.join(buf)}\n```")
+                await interaction.followup.send(f"```\n{''.join(buf)}\n```",ephemeral=True)
                 buf, count = [], 0
             buf.append(line); count += len(line)
         if buf:
-            await interaction.followup.send(f"```\n{''.join(buf)}\n```")
+            await interaction.followup.send(f"```\n{''.join(buf)}\n```",ephemeral=True)
 
 if __name__ == "__main__":
     TOKEN = os.getenv("DISCORD_TOKEN")
@@ -153,3 +135,4 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
