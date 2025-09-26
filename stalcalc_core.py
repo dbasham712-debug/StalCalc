@@ -334,8 +334,7 @@ def run_calc(
     weapon_idx:int,
     hit_frac:float,
     use_buffs:bool,
-    use_limits:bool,
-    progress_every:int|None = None
+    use_limits:bool
 ) -> str:
     """
     Returns a formatted string (what you used to print).
@@ -489,10 +488,6 @@ def run_calc(
                 D_raw, D_after_PH, net_dps, br_frac, DTK, buff_br_flat
             )
 
-        if progress_every and idx % progress_every == 0 and idx > 0:
-            # progress hook (not used by bot, but handy in CLI runs)
-            pass
-
     # ----- Build Output -----
     if best is None:
         return "\nNo valid combinations meet the psy/rad/bio/frost/temp constraints for this container."
@@ -564,4 +559,5 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
