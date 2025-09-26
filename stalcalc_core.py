@@ -263,7 +263,7 @@ armors = [
     {"armor": "Cent", "Bullet Resistence": 355, "Periodic Healing": 0},
     {"armor": "Reiter", "Bullet Resistence": 420.31,"Periodic Healing": 0},
     {"armor": "Punisher", "Bullet Resistence": 258.9, "Periodic Healing": 0},
-    {"armor": "RAPS", "Bullet Resestence": 297.88, "Periodic Healing": 2}
+    {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2}
 ]
 
 weapons = [
@@ -559,5 +559,6 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
