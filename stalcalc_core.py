@@ -248,7 +248,7 @@ containers = [
     {"container": "Barrel",  "capacity": 7, "Internal Protection": 60, "Effectiveness": 93, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Overton", "capacity": 6, "Internal Protection": 60, "Effectiveness": 100, "Healing Effectiveness": 31.3, "Frost": 0, "Psy-Emissions": 0},
     {"container": "BD6", "capacity": 6, "Internal Protection": 79, "Effectiveness": 100, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
-    {"container": "Trailblazer", "capacity": 7, "Internal Protection": 60, "Effectiveness": 100, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
+    {"container": "Sheaf", "capacity": 7, "Internal Protection": 60, "Effectiveness": 100, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Chitin", "capacity": 6, "Internal Protection": 60, "Effectiveness": 115, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "SMC", "capacity": 4, "Internal Protection": 95, "Effectiveness": 120, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Z6", "capacity": 6, "Internal Protection": 75, "Effectiveness": 100, "Frost": 2.5, "Healing Effectiveness": 0, "Psy-Emissions": -0.5},
@@ -564,3 +564,4 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
