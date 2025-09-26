@@ -21,7 +21,7 @@ CONTAINER_CHOICES = [
     app_commands.Choice(name="BD6", value=2),
     app_commands.Choice(name="Sheaf", value=3),
     app_commands.Choice(name="Chitin", value=4),
-    app_commands.Choice(name="SMC", value=5)
+    app_commands.Choice(name="SMC", value=5),
     app_commands.Choice(name="Z6", value=6)
 ]
 MEDKIT_CHOICES = [
@@ -137,6 +137,7 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
 
 
 
