@@ -12,15 +12,17 @@ ARMOR_CHOICES = [
     app_commands.Choice(name="M2", value=4),
     app_commands.Choice(name="Cent", value=5),
     app_commands.Choice(name="Reiter", value=6),
-    app_commands.Choice(name="Punisher", value=7)
+    app_commands.Choice(name="Punisher", value=7),
+    app_commands.Choice(name="RAPS", value=8)
 ]
 CONTAINER_CHOICES = [
     app_commands.Choice(name="Barrel", value=0),
     app_commands.Choice(name="Overton", value=1),
     app_commands.Choice(name="BD6", value=2),
-    app_commands.Choice(name="Trailblazer", value=3),
+    app_commands.Choice(name="Sheaf", value=3),
     app_commands.Choice(name="Chitin", value=4),
     app_commands.Choice(name="SMC", value=5)
+    app_commands.Choice(name="Z6", value=6)
 ]
 MEDKIT_CHOICES = [
     app_commands.Choice(name="Blue Medkit", value=0),
@@ -135,5 +137,6 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
 
 
