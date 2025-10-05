@@ -437,6 +437,7 @@ armors = [
     {"armor": "Punisher", "Bullet Resistence": 258.9, "Periodic Healing": 0},
     {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2},
     {"armor": "Saturn", "Bullet Resistence": 261.48,"Periodic Healing": 0},
+    {"armor": "JD ZIVCAS", "Bullet Resistence": 275.75,"Periodic Healing": 3},
 
 ]
 
@@ -728,6 +729,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
