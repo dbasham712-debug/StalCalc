@@ -2,9 +2,9 @@
 import pandas as pd
 import numpy as np
 import time
-
+from typing import Optional
 # ===================== DATA =====================
-c_items = [
+red_items = [
     {
         "name": "Red Gum",
         "Quality": 160,
@@ -74,14 +74,14 @@ c_items = [
     #    "Radiation": -1.25,
     #    "Healing Effectiveness": 14.14
     #},
-    {
-        "name": "Red Rose",
-        "Quality": 160,
-        "Bullet Resistance": 24.13,
-        "Explosion Protection": 18.72,
-        "Psy-Emissions": -1.25,
-        "Carry Weight": 13.52
-    },
+    #{
+    #    "name": "Red Rose",
+    #    "Quality": 160,
+    #    "Bullet Resistance": 24.13,
+    #    "Explosion Protection": 18.72,
+    #    "Psy-Emissions": -1.25,
+    #    "Carry Weight": 13.52
+    #},
     {
         "name": "Red Radiator",
         "Quality": 160,
@@ -243,6 +243,178 @@ c_items = [
     #    "Temperature": -2.50
     #}
 ]
+pink_items = [
+    {
+        "name": "Pink Gum",
+        "Quality": 145,
+        "Health Regeneration": 3.77,
+        "Radiation": 5.73,
+        "Temperature": 2.41,
+        "Reaction to chemical burns": 8.86
+    },
+    {
+        "name": "Pink Dark Crystal",
+        "Quality": 145,
+        "Health Regeneration": 5.84,
+        "Stamina Regeneration": 5.84,
+        "Radiation": 2.41,
+        "Psy-Emissions": -0.63,
+        "Vitality": 1.89
+    },
+    {
+        "name": "Pink Radiator",
+        "Quality": 145,
+        "Movement Speed": 2.64,
+        "Temperature": 5.73,
+        "Psy-Emissions": 2.41,
+        "Reaction to burns": 6.03
+    },
+    {
+        "name": "Pink Gills",
+        "Quality": 145,
+        "Vitality": 3.39,
+        "Health Regeneration": 8.11,
+        "Radiation": -2.5,
+        "Stamina Regeneration": 6.03
+    },
+    {
+        "name": "Pink Scrubber",
+        "Quality": 145,
+        "Healing Effectiveness": 14.7,
+        "Radiation": 2.41,
+        "Biological Infection": 5.73,
+        "Reaction to laceration": 7.35
+    },
+    {
+        "name": "Pink Fossil",
+        "Quality": 145,
+        "Vitality": 5.28,
+        "Stamina Regeneration": 9.05,
+        "Biological Infection": -2.50,
+        "Periodic Healing": 1.13
+    },
+    {
+        "name": "Pink Shard",
+        "Quality": 145,
+        "Vitality": 4.90,
+        "Healing Effectiveness": 21.87,
+        "Biological Infection": -2.5,
+        "Stamina Regeneration": 6.03
+    },
+    {
+        "name": "Pink Atom",
+        "Quality": 145,
+        "Stamina Regeneration": 8.67,
+        "Radiation": 2.41,
+        "Temperature": 2.41,
+        "Biological Infection": 2.41,
+        "Psy-Emissions": 2.41,
+        "Bleeding": -2.26,
+        "Vitality": 1.89
+    },
+    {
+        "name": "Pink Cursed Rose",
+        "Quality": 145,
+        "Bullet Resistance": 29.22,
+        "Explosion Protection": 22.43,
+        "Radiation": -1.25,
+        "Stamina Regeneration": 5.47
+    },
+    {
+        "name": "Pink Proto-Onion",
+        "Quality": 145,
+        "Stamina Regeneration": 6.79,
+        "Healing Effectiveness": 13.20,
+        "Radiation": 5.73,
+        "Health Regeneration": 2.64
+    },
+    {
+        "name": "Pink Veiner",
+        "Quality": 145,
+        "Carry Weight": 15.46,
+        "Bullet Resistance": 20.36,
+        "Radiation": -0.63,
+        "Psy-Emissions": 2.41,
+        "Stamina Regeneration": 3.77
+    },
+    {
+        "name": "Pink Prism",
+        "Quality": 145,
+        "Bullet Resistance": 36.57,
+        "Explosion Protection": 28.27,
+        "Psy-Emissions": -2.5,
+        "Stamina Regeneration": 6.79
+    },
+    {
+        "name": "Pink Scallop",
+        "Quality": 145,
+        "Bullet Resistance": 25.45,
+        "Explosion Protection": 19.6,
+        "Radiation": -1.25,
+        "Bleeding": -1.70
+    },
+    {
+        "name": "Pink Frame",
+        "Quality": 145,
+        "Carry Weight": 23.37,
+        "Stamina Regeneration": 5.66,
+        "Radiation": 2.41,
+        "Temperature": 2.41,
+        "Psy-Emissions": 2.41,
+        "Biological Infection": 2.41
+    },
+    {
+        "name": "Pink Rime",
+        "Quality": 145,
+        "Bullet Resistance": 25.45,
+        "Laceration Protection": 26.96,
+        "Temperature": 0.36,
+        "Frost": -0.5,
+        "Explosion Protection": 14.70
+    },
+    {
+        "name": "Pink Chilly",
+        "Quality": 145,
+        "Vitality": 6.79,
+        "Temperature": 0.72,
+        "Frost": -1,
+        "Burning": -1.13,
+        "Explosion Protection": 28.09
+    },
+    {
+        "name": "Pink Heel",
+        "Quality": 145,
+        "Healing Effectiveness": 41.47,
+        "Temperature": 0.72,
+        "Frost": -1,
+        "Reaction to laceration": 10.18,
+        "Reaction to burns": 6.22
+    },
+    {
+        "name": "Pink Firebird",
+        "Quality": 145,
+        "Health Regeneration": 5.09,
+        "Healing Effectiveness": 27.71,
+        "Temperature": -1.25,
+        "Bleeding": -1.89
+    },
+    {
+        "name": "Pink Viburnum Branch",
+        "Quality": 145,
+        "Vitality": 3.77,
+        "Healing Effectiveness": 34.68,
+        "Radiation": -2.5,
+        "Stamina": 30.54
+    },
+    {
+        "name": "Pink Transformer",
+        "Quality": 145,
+        "Stamina": 35.06,
+        "Carry Weight": 16.40,
+        "Biological Infection": 2.41,
+        "Psy-Emissions": 5.73
+    }
+]
 
 containers = [
     {"container": "Barrel",  "capacity": 7, "Internal Protection": 60, "Effectiveness": 93, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
@@ -263,7 +435,9 @@ armors = [
     {"armor": "Cent", "Bullet Resistence": 355, "Periodic Healing": 0},
     {"armor": "Reiter", "Bullet Resistence": 420.31,"Periodic Healing": 0},
     {"armor": "Punisher", "Bullet Resistence": 258.9, "Periodic Healing": 0},
-    {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2}
+    {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2},
+    {"armor": "Saturn", "Bullet Resistence": 261.48,"Periodic Healing": 0},
+
 ]
 
 weapons = [
@@ -277,16 +451,32 @@ medkit = [
     {"name": "STRIKE",      "Periodic Healing": 10.0, "Duration": 5.0},
     {"name": "Green Medkit", "Periodic Healing": 7.0, "Duration": 12.0}
 ]
-
-nades = [
-    {"nade": "Plantain", "Health Regeneration":30}
-]
 # ===================== NORMALIZE =====================
+def norm_cols(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(columns=lambda c: c.strip().lower().replace(" ", "_"))
 
-def norm_cols(df):
-    return df.rename(columns=lambda c: c.strip().lower().replace(" ","_"))
+def prepare_items_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Ensure required columns exist and convert % → fractions for the correct fields."""
+    df = df.copy()
+    # Ensure columns
+    needed = [
+        "bullet_resistance","vitality","psy-emissions","radiation",
+        "biological_infection","frost","temperature","healing_effectiveness",
+        "periodic_healing","health_regeneration","name","quality"
+    ]
+    for col in needed:
+        if col not in df.columns:
+            df[col] = 0.0
 
-df_items      = norm_cols(pd.DataFrame(c_items))
+    # Convert percentage-like numeric columns to fractions, excluding absolute stats
+    absolute_cols = {"name","bullet_resistance","quality","psy-emissions","radiation","biological_infection","frost","temperature"}
+    num_cols = [c for c in df.columns if df[c].dtype != "O"]
+    percent_like = [c for c in num_cols if c not in absolute_cols]
+    df[percent_like] = df[percent_like].fillna(0.0) / 100.0
+    return df
+
+df_red_items  = prepare_items_df(norm_cols(pd.DataFrame(red_items)))
+df_pink_items = prepare_items_df(norm_cols(pd.DataFrame(pink_items)))
 df_containers = norm_cols(pd.DataFrame(containers))
 df_armors     = norm_cols(pd.DataFrame(armors))
 df_weapons    = norm_cols(pd.DataFrame(weapons))
@@ -296,30 +486,9 @@ df_medkits    = norm_cols(pd.DataFrame(medkit))
 if "bullet_resistence" in df_armors.columns and "bullet_resistance" not in df_armors.columns:
     df_armors = df_armors.rename(columns={"bullet_resistence": "bullet_resistance"})
 
-# ensure expected item columns exist
-for col in [
-    "bullet_resistance","vitality","psy-emissions","radiation",
-    "biological_infection","frost","temperature","healing_effectiveness",
-    "periodic_healing","health_regeneration"
-]:
-    if col not in df_items.columns:
-        df_items[col] = 0.0
-
-# convert % -> fraction for percent-like item columns
-# DO NOT touch: absolute stats (psy, rad, bio, frost, temperature)
-percent_cols = [
-    c for c in df_items.columns
-    if c not in ("name", "bullet_resistance", "quality",
-                 "psy-emissions", "radiation", "biological_infection",
-                 "frost", "temperature")
-    and df_items[c].dtype != "O"
-]
-df_items[percent_cols] = df_items[percent_cols].fillna(0.0) / 100.0
-
 # ===================== CALC CORE =====================
-
 def compositions(total: int, m: int):
-    """All nonnegative integer tuples of length m that sum to total."""
+    """Yield all nonnegative integer tuples of length m that sum to total."""
     if m == 1:
         yield (total,)
         return
@@ -334,12 +503,15 @@ def run_calc(
     weapon_idx:int,
     hit_frac:float,
     use_buffs:bool,
-    use_limits:bool
+    use_limits:bool,
+    df_items_override: Optional[pd.DataFrame] = None,
 ) -> str:
     """
-    Returns a formatted string (what you used to print).
-    Note: indices are 0-based (the bot maps 1->0, etc.).
+    Returns a formatted string suitable for Discord.
+    Pass df_items_override = df_red_items or df_pink_items from the bot.
     """
+    # Pick item set
+    df_items = df_items_override if df_items_override is not None else df_red_items
 
     chosen_armor     = df_armors.iloc[armor_idx]
     chosen_container = df_containers.iloc[container_idx]
@@ -350,7 +522,7 @@ def run_calc(
 
     # Container params
     K   = int(chosen_container["capacity"])
-    IP  = float(chosen_container.get("internal_protection", 0.0)) / 100.0   # info only
+    IP  = float(chosen_container.get("internal_protection", 0.0)) / 100.0  # info only
     EFF = float(chosen_container.get("effectiveness", 100.0)) / 100.0
     armor_bullet = float(chosen_armor.get("bullet_resistance", 0.0))
 
@@ -366,18 +538,18 @@ def run_calc(
     cont_frost  = cont_get("frost")
     cont_temp   = cont_get("temperature")
     cont_heal   = cont_get("healing_effectiveness", as_fraction=True)  # fraction addend
-    cont_ph_pct = cont_get("periodic_healing", as_fraction=True)       # fraction/s
+    cont_ph_pct = cont_get("periodic_healing", as_fraction=True)       # fraction
 
     # Armor periodic healing (e.g., M2 has 3%)
-    armor_ph_pct = float(chosen_armor.get("periodic_healing", 0.0)) / 100.0  # fraction/s
+    armor_ph_pct = float(chosen_armor.get("periodic_healing", 0.0)) / 100.0  # fraction
 
-    # ===== Default buffs =====
-    buff_vit      = 0.13 if use_buffs else 0.0   # +13% Vitality (additive)
-    buff_he       = 0.321 if use_buffs else 0.0   # +32.1% Healing Effectiveness (additive)
-    buff_hr       = 0.12 if use_buffs else 0.0   # +12% Health Regeneration (additive)
+    # ===== Default buffs ===== (adjust to your latest values if needed)
+    buff_vit      = 0.13  if use_buffs else 0.0   # +13% Vitality
+    buff_he       = 0.321 if use_buffs else 0.0   # +32.1% Healing Effectiveness
+    buff_hr       = 0.12  if use_buffs else 0.0   # +12% Health Regeneration
     buff_br_flat  = 9.9   if use_buffs else 0.0   # +9.9 flat Bullet Resistance
 
-    # ===== Build arrays for ALL items dynamically =====
+    # ===== Build arrays from chosen item set =====
     names  = df_items["name"].tolist()
     M      = len(names)
 
@@ -389,8 +561,8 @@ def run_calc(
     frost  = df_items["frost"].fillna(0.0).to_numpy(float)                   # absolute
     temp   = df_items["temperature"].fillna(0.0).to_numpy(float)             # absolute
     heal   = df_items["healing_effectiveness"].fillna(0.0).to_numpy(float)   # fraction addend
-    perh   = df_items["periodic_healing"].fillna(0.0).to_numpy(float)        # fraction/s
-    hregen = df_items["health_regeneration"].fillna(0.0).to_numpy(float)     # fraction (not /s)
+    perh   = df_items["periodic_healing"].fillna(0.0).to_numpy(float)        # fraction
+    hregen = df_items["health_regeneration"].fillna(0.0).to_numpy(float)     # fraction
 
     # Items scaled by container effectiveness
     adj_bullet = bullet * EFF
@@ -404,19 +576,11 @@ def run_calc(
     adj_perh   = perh   * EFF
     adj_hreg   = hregen * EFF
 
+    # Limits
     if use_limits:
-        PSY_LIMIT = -0.50
-        RAD_LIMIT = -0.50
-        BIO_LIMIT = -0.50
-        FROST_LIMIT = -1.00
-        TEMP_LIMIT = -0.50
+        PSY_LIMIT, RAD_LIMIT, BIO_LIMIT, FROST_LIMIT, TEMP_LIMIT = -0.50, -0.50, -0.50, -1.00, -0.50
     else:
-        # Effectively disable constraints
-        PSY_LIMIT = -9999
-        RAD_LIMIT = -9999
-        BIO_LIMIT = -9999
-        FROST_LIMIT = -9999
-        TEMP_LIMIT = -9999
+        PSY_LIMIT = RAD_LIMIT = BIO_LIMIT = FROST_LIMIT = TEMP_LIMIT = -9999
 
     # Incoming weapon stats
     weapon_name  = chosen_weapon["weapon"]
@@ -437,7 +601,7 @@ def run_calc(
         total_bullet = armor_bullet + items_bullet + buff_br_flat  # include flat BR from buffs
 
         vitality_mult = 1.0 + float(np.dot(counts_arr, adj_vital)) + buff_vit
-        DTK = (total_bullet + 100.0) * vitality_mult
+        DTK = (total_bullet + 100.0) * vitality_mult  # Effective health
 
         total_psy   = float(np.dot(counts_arr, adj_psy))   + cont_psy
         total_rad   = float(np.dot(counts_arr, adj_rad))   + cont_rad
@@ -446,19 +610,15 @@ def run_calc(
         total_temp  = float(np.dot(counts_arr, adj_temp))  + cont_temp
 
         # Caps
-        if (
-            (total_psy   < PSY_LIMIT)  or
-            (total_rad   < RAD_LIMIT)  or
-            (total_bio   < BIO_LIMIT)  or
-            (total_frost < FROST_LIMIT)or
-            (total_temp  < TEMP_LIMIT)
-        ):
+        if ((total_psy < PSY_LIMIT) or (total_rad < RAD_LIMIT) or
+            (total_bio < BIO_LIMIT) or (total_frost < FROST_LIMIT) or
+            (total_temp < TEMP_LIMIT)):
             continue
 
         # ---- DAMAGE PIPELINE ----
         D_raw = raw_dps
 
-        # BR is represented via DTK; keep fraction for report only
+        # BR is represented via DTK; compute br_frac for report only
         br_frac = total_bullet / (total_bullet + 100.0) if total_bullet > -100.0 else 0.0
 
         # Healing Effectiveness & Health Regen
@@ -466,15 +626,17 @@ def run_calc(
         total_HR = BASE_HEALTH_REGEN + float(np.dot(counts_arr, adj_hreg)) + buff_hr
 
         # Periodic Healing (as % DPS reduction), includes armor & medkit
-        items_PH = float(np.dot(counts_arr, adj_perh))
-        cont_PH = cont_ph_pct
-        armor_PH = armor_ph_pct
+        items_PH  = float(np.dot(counts_arr, adj_perh))
+        cont_PH   = cont_ph_pct
+        armor_PH  = armor_ph_pct
         medkit_PH = float(chosen_medkit["periodic_healing"]) / 100.0
-        PH_total = items_PH + cont_PH + armor_PH + medkit_PH
+        PH_total  = items_PH + cont_PH + armor_PH + medkit_PH
 
+        # PH scales by (1 + HE + 0.20 * HR); clamp
         PH_effective_pct = PH_total * (1.0 + total_HE + 0.20 * total_HR)
         PH_effective_pct = max(0.0, min(PH_effective_pct, 0.99))
 
+        # Final DPS after PH% reduction; BR already baked into DTK
         D_after_PH = D_raw * (1.0 - PH_effective_pct)
         net_dps = D_after_PH
 
@@ -485,8 +647,14 @@ def run_calc(
                 ttd, counts, total_bullet, vitality_mult,
                 total_HE, total_HR, PH_total, PH_effective_pct,
                 (total_psy, total_rad, total_bio, total_frost, total_temp),
-                D_raw, D_after_PH, net_dps, br_frac, DTK, buff_br_flat
+                D_raw, D_after_PH, net_dps, br_frac, DTK, buff_br_flat,
+                PSY_LIMIT, RAD_LIMIT, BIO_LIMIT, FROST_LIMIT, TEMP_LIMIT
             )
+
+        # optional progress pulse
+        if idx % 1000 == 0 and idx > 0:
+            elapsed = time.time() - start_time
+            print(f"Checked {idx:,} combos in {elapsed:.1f} seconds...", end="\r")
 
     # ----- Build Output -----
     if best is None:
@@ -494,7 +662,8 @@ def run_calc(
 
     (ttd, counts, tb, vm,
      total_HE, total_HR, PH_total, PH_effective_pct,
-     caps_tuple, D_raw, D_after_PH, net_dps, br_frac, DTK, buff_br_flat) = best
+     caps_tuple, D_raw, D_after_PH, net_dps, br_frac, DTK, buff_br_flat,
+     PSY_LIMIT, RAD_LIMIT, BIO_LIMIT, FROST_LIMIT, TEMP_LIMIT) = best
 
     tot_psy, tot_rad, tot_bio, tot_frost, tot_temp = caps_tuple
 
@@ -542,10 +711,10 @@ def run_calc(
     lines.append(f"  Temp total: {tot_temp:.2f}  (limit: {TEMP_LIMIT})")
 
     lines.append("\nHealing stats:")
-    lines.append(f"  Healing Effectiveness (HE): {(total_HE) * 100:.2f}%  (multiplier = {total_HE:.3f})")
-    lines.append(f"  Health Regeneration (HR):   {(total_HR) * 100:.2f}%")
-    lines.append(f"  Periodic Healing (PH raw):  {(PH_total) * 100:.2f}%")
-    lines.append(f"  PH effective (used as DPS reduction): {(PH_effective_pct) * 100:.2f}%")
+    lines.append(f"  Healing Effectiveness (HE): {total_HE*100:.2f}%  (multiplier = {1+total_HE:.3f})")
+    lines.append(f"  Health Regeneration (HR):   {total_HR*100:.2f}%")
+    lines.append(f"  Periodic Healing (PH raw):  {PH_total*100:.2f}%")
+    lines.append(f"  PH effective (DPS reduction): {PH_effective_pct*100:.2f}%")
 
     lines.append("\nDPS pipeline:")
     lines.append(f"  Raw DPS:          {D_raw:.2f}")
@@ -559,6 +728,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
