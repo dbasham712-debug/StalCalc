@@ -13,7 +13,8 @@ ARMOR_CHOICES = [
     app_commands.Choice(name="Cent", value=5),
     app_commands.Choice(name="Reiter", value=6),
     app_commands.Choice(name="Punisher", value=7),
-    app_commands.Choice(name="RAPS", value=8)
+    app_commands.Choice(name="RAPS", value=8),
+    app_commands.Choice(name="Saturn", value=9),
 ]
 CONTAINER_CHOICES = [
     app_commands.Choice(name="Barrel", value=0),
@@ -34,12 +35,17 @@ WEAPON_CHOICES = [
     app_commands.Choice(name="AK-15", value=0),
     app_commands.Choice(name="QBZ", value=1),
 ]
+COLOR_CHOICES = [
+    app_commands.Choice(name="red", value="red"),
+    app_commands.Choice(name="pink", value="pink"),
+]
 # ---- bring in your data + calculator ----
 from stalcalc_core import (
     df_armors, df_containers, df_medkits, df_weapons,
+    df_red_items, df_pink_items,
     run_calc
 )
-GUILD_ID = 1234
+GUILD_ID = 414969988374462466
 
 intents = discord.Intents.default()
 client = commands.Bot(command_prefix="!", intents=intents)
@@ -68,7 +74,8 @@ def fmt_id_list(df, label_col: str) -> str:
     weapon="Pick your weapon",
     hit="Shooter hit % (0-100)",
     use_buffs="Use default buffs? (yes/no)",
-    use_limits="Use limits for psy/rad/bio/frost/temp? (yes/no)"
+    use_limits="Use limits for psy/rad/bio/frost/temp? (yes/no)",
+    color="Which artifact set to use (red/pink)"
 )
 @app_commands.choices(
     armor=ARMOR_CHOICES,
@@ -82,7 +89,8 @@ def fmt_id_list(df, label_col: str) -> str:
     use_limits=[
         app_commands.Choice(name="yes", value="yes"),
         app_commands.Choice(name="no", value="no"),
-    ]
+    ],
+    color=COLOR_CHOICES,
 )
 async def calc_cmd(
     interaction: discord.Interaction,
@@ -93,6 +101,7 @@ async def calc_cmd(
     hit: app_commands.Range[float, 0.0, 100.0],
     use_buffs: app_commands.Choice[str],
     use_limits: app_commands.Choice[str],
+    color: app_commands.Choice[str],
 ):
     await interaction.response.defer(ephemeral=True, thinking=True)
 
@@ -103,6 +112,7 @@ async def calc_cmd(
     hit_frac      = hit / 100.0
     use_buffs_bool  = (use_buffs.value == "yes")
     use_limits_bool = (use_limits.value == "yes")
+    items_df = df_red_items if color.value == "red" else df_pink_items
 
     try:
         output_text = run_calc(
@@ -113,6 +123,7 @@ async def calc_cmd(
             hit_frac=hit_frac,
             use_buffs=use_buffs_bool,
             use_limits=use_limits_bool,
+            df_items_override=items_df,
         )
     except Exception as e:
         await interaction.followup.send(f"❌ Calculation error: `{e}`")
@@ -137,6 +148,7 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
 
 
 
