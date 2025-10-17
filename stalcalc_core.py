@@ -87,8 +87,7 @@ red_items = [
         "Quality": 160,
         "Movement Speed": 2.91,
         "Temperature": 6.32,
-        "Psy-Emissions": 2.66,
-        "Reaction to burns": 6.66
+        "Psy-Emissions": 2.66
     },
     {
         "name": "Red Gills",
@@ -420,7 +419,7 @@ containers = [
     {"container": "Barrel",  "capacity": 7, "Internal Protection": 60, "Effectiveness": 93, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Overton", "capacity": 6, "Internal Protection": 60, "Effectiveness": 100, "Healing Effectiveness": 31.3, "Frost": 0, "Psy-Emissions": 0},
     {"container": "BD6", "capacity": 6, "Internal Protection": 79, "Effectiveness": 100, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
-    {"container": "Sheaf", "capacity": 7, "Internal Protection": 60, "Effectiveness": 100, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
+    {"container": "Sheaf", "capacity": 7, "Internal Protection": 60, "Effectiveness": 97, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Chitin", "capacity": 6, "Internal Protection": 60, "Effectiveness": 115, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "SMC", "capacity": 4, "Internal Protection": 95, "Effectiveness": 120, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Z6", "capacity": 6, "Internal Protection": 75, "Effectiveness": 100, "Frost": 2.5, "Healing Effectiveness": 0, "Psy-Emissions": -0.5},
@@ -433,7 +432,7 @@ armors = [
     {"armor": "SBA", "Bullet Resistence": 400.71,"Periodic Healing": 0},
     {"armor": "M2", "Bullet Resistence": 310.82, "Periodic Healing": 3},
     {"armor": "Cent", "Bullet Resistence": 355, "Periodic Healing": 0},
-    {"armor": "Reiter", "Bullet Resistence": 420.31,"Periodic Healing": 0},
+    {"armor": "Reiter", "Bullet Resistence": 433.07,"Periodic Healing": 0},
     {"armor": "Punisher", "Bullet Resistence": 258.9, "Periodic Healing": 0},
     {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2},
     {"armor": "Saturn", "Bullet Resistence": 261.48,"Periodic Healing": 0},
@@ -729,6 +728,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
