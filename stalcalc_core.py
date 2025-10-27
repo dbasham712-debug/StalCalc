@@ -22,6 +22,43 @@ red_items = [
         "Psy-Emissions": -0.63,
         "Vitality": 2.08
     },
+    {
+        "name": "Red Timber",
+        "Quality": 160,
+        "Bullet Resistance": 22.46,
+        "Radiation": 2.66,
+        "Temperature": -0.63,
+        "Health Regeneration": 4.16
+    },
+    {
+        "name": "Red Black Hole",
+        "Quality": 160,
+        "Bullet Resistance": 28.08,
+        "Vitality": 1.46,
+        "Health Regeneration": 9.98,
+        "Psy-Emissions": -2.5
+    },
+    {
+        "name": "Red Larva",
+        "Quality": 160,
+        "Healing Effectiveness": 21.42,
+        "Biological Infection": -0.63,
+        "Vitality": 2.5
+    },
+    {
+        "name": "Red Mug",
+        "Quality": 160,
+        "Health Regeneration": 4.16,
+        "Vitality": 3.33,
+        "Radiation": -0.63,
+        "Biological Infection": 2.66
+    },
+    {
+        "name": "Red Snares",
+        "Quality": 160,
+        "Bullet Resistance": 14.14,
+        "Psy-Emissions": 8.49
+    }
     #{
     #    "name": "Red Leaded Glass",
     #    "Quality": 160,
@@ -412,7 +449,12 @@ pink_items = [
         "Carry Weight": 16.40,
         "Biological Infection": 2.41,
         "Psy-Emissions": 5.73
-    }
+    },
+    {"name": "Pink Timber","Quality": 145,"Bullet Resistance": 20.36,"Radiation": 2.41,"Temperature": -0.63,"Health Regeneration": 3.77},
+    {"name": "Pink Mug","Quality": 145,"Vitality": 3.02,"Radiation": -0.63,"Health Regeneration": 3.77},
+    {"name": "Pink Snares","Quality": 145,"Psy-Emissions": 7.69,"Bullet Resistance": 12.82},
+    {"name": "Pink Blackhole","Quality": 145,"Vitality": 1.32,"Health Regeneration": 9.05,"Bullet Resistance": 25.45,"Psy-Emissions": -2.5},
+    {"name": "Pink Larva","Quality": 145,"Healing Effectiveness": 19.42,"Temperature": 2.41,"Biological Infection": -0.63,"Vitality": 2.26},
 ]
 
 containers = [
@@ -728,6 +770,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
