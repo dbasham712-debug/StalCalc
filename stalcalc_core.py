@@ -58,7 +58,7 @@ red_items = [
         "Quality": 160,
         "Bullet Resistance": 14.14,
         "Psy-Emissions": 8.49
-    }
+    },
     #{
     #    "name": "Red Leaded Glass",
     #    "Quality": 160,
@@ -770,6 +770,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
