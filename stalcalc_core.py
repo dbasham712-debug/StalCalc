@@ -465,6 +465,7 @@ containers = [
     {"container": "Chitin", "capacity": 6, "Internal Protection": 60, "Effectiveness": 115, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "SMC", "capacity": 4, "Internal Protection": 95, "Effectiveness": 120, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Z6", "capacity": 6, "Internal Protection": 75, "Effectiveness": 100, "Frost": 2.5, "Healing Effectiveness": 0, "Psy-Emissions": -0.5},
+    {"container": "BD6u", "capacity": 6, "Internal Protection": 78.5, "Effectiveness": 114, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
 ]
 
 armors = [
@@ -770,6 +771,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
