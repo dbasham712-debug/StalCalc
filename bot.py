@@ -16,6 +16,7 @@ ARMOR_CHOICES = [
     app_commands.Choice(name="RAPS", value=8),
     app_commands.Choice(name="Saturn", value=9),
     app_commands.Choice(name="JD ZIVCAS", value=10),
+    app_commands.Choice(name="Rigel", value=11)
 ]
 CONTAINER_CHOICES = [
     app_commands.Choice(name="Barrel", value=0),
@@ -36,6 +37,7 @@ MEDKIT_CHOICES = [
 WEAPON_CHOICES = [
     app_commands.Choice(name="AK-15", value=0),
     app_commands.Choice(name="QBZ", value=1),
+    app_commands.Choice(name="X95 (A)", value=2)
 ]
 COLOR_CHOICES = [
     app_commands.Choice(name="red", value="red"),
@@ -150,6 +152,7 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
+
 
 
 
