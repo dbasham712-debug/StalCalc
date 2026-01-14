@@ -8,10 +8,24 @@ red_items = [
     {
         "name": "Red Gum",
         "Quality": 160,
-        "Health Regeneration": 4.16,
+        "Health Regeneration": 3.95,
         "Radiation": 6.32,
         "Temperature": 2.66,
         "Reaction to chemical burns": 9.78
+    },
+    {
+        "name": "Red Dumbbell",
+        "Quality": 160,
+        "Vitality": 1.25,
+        "Healing Effectiveness": 32.03,
+        "Radiation": -2.5
+    },
+    {
+        "name": "Red Hoop",
+        "Quality": 160,
+        "Health Regeneration": 8.32,
+        "Bullet Resistance": 25.38,
+        "Psy-Emissions": -2.5
     },
     {
         "name": "Red Dark Crystal",
@@ -28,27 +42,28 @@ red_items = [
         "Bullet Resistance": 22.46,
         "Radiation": 2.66,
         "Temperature": -0.63,
-        "Health Regeneration": 4.16
+        "Health Regeneration": 3.95
     },
     {
         "name": "Red Black Hole",
         "Quality": 160,
         "Bullet Resistance": 28.08,
         "Vitality": 1.46,
-        "Health Regeneration": 9.98,
+        "Health Regeneration": 4.78,
         "Psy-Emissions": -2.5
     },
     {
         "name": "Red Larva",
         "Quality": 160,
-        "Healing Effectiveness": 21.42,
+        "Healing Effectiveness": 19.97,
         "Biological Infection": -0.63,
+        "Temperature": 2.66,
         "Vitality": 2.5
     },
     {
         "name": "Red Mug",
         "Quality": 160,
-        "Health Regeneration": 4.16,
+        "Health Regeneration": 3.95,
         "Vitality": 3.33,
         "Radiation": -0.63,
         "Biological Infection": 2.66
@@ -79,14 +94,14 @@ red_items = [
     #    "Psy-Emissions": 2.66,
     #    "Bleeding Protection": 9.57
     #},
-    #{
-    #    "name": "Red Stress Fest",
-    #    "Quality": 160,
-    #    "Movement Speed": 3.95,
-    #    "Healing Effectiveness": 30.58,
-    #    "Temperature": -1.25,
-    #    "Carry Weight": 18.10
-    #},
+    {
+        "name": "Red Stress Fest",
+        "Quality": 160,
+        "Movement Speed": 3.95,
+        "Healing Effectiveness": 28.29,
+        "Temperature": -1.25,
+        "Carry Weight": 18.10
+    },
     #{
     #    "name": "Red Phlegm",
     #    "Quality": 160,
@@ -130,14 +145,14 @@ red_items = [
         "name": "Red Gills",
         "Quality": 160,
         "Vitality": 3.74,
-        "Health Regeneration": 8.94,
+        "Health Regeneration": 8.32,
         "Radiation": -2.5,
         "Stamina Regeneration": 6.66
     },
     {
         "name": "Red Scrubber",
         "Quality": 160,
-        "Healing Effectiveness": 16.22,
+        "Healing Effectiveness": 14.98,
         "Radiation": 2.66,
         "Biological Infection": 6.32,
         "Reaction to laceration": 8.11
@@ -146,15 +161,15 @@ red_items = [
         "name": "Red Fossil",
         "Quality": 160,
         "Vitality": 5.82,
-        "Stamina Regeneration": 9.98,
+        "Stamina Regeneration": 7.49,
         "Biological Infection": -2.50,
-        "Periodic Healing": 1.25
+        "Periodic Healing": 1.46
     },
     {
         "name": "Red Shard",
         "Quality": 160,
         "Vitality": 5.41,
-        "Healing Effectiveness": 24.13,
+        "Healing Effectiveness": 22.46,
         "Biological Infection": -2.5,
         "Stamina Regeneration": 6.66
     },
@@ -181,9 +196,9 @@ red_items = [
         "name": "Red Proto-Onion",
         "Quality": 160,
         "Stamina Regeneration": 7.49,
-        "Healing Effectiveness": 14.56,
+        "Healing Effectiveness": 13.31,
         "Radiation": 6.32,
-        "Health Regeneration": 2.91
+        "Health Regeneration": 2.7
     },
     {
         "name": "Red Veiner",
@@ -241,7 +256,7 @@ red_items = [
     {
         "name": "Red Heel",
         "Quality": 160,
-        "Healing Effectiveness": 45.76,
+        "Healing Effectiveness": 42.43,
         "Temperature": 0.80,
         "Frost": -1,
         "Reaction to laceration": 11.23,
@@ -250,8 +265,8 @@ red_items = [
     {
         "name": "Red Firebird",
         "Quality": 160,
-        "Health Regeneration": 5.62,
-        "Healing Effectiveness": 30.58,
+        "Health Regeneration": 5.41,
+        "Healing Effectiveness": 28.29,
         "Temperature": -1.25,
         "Bleeding": -2.08
     },
@@ -259,7 +274,7 @@ red_items = [
         "name": "Red Viburnum Branch",
         "Quality": 160,
         "Vitality": 4.16,
-        "Healing Effectiveness": 38.27,
+        "Healing Effectiveness": 35.57,
         "Radiation": -2.5,
         "Stamina": 33.7
     },
@@ -270,6 +285,14 @@ red_items = [
         "Carry Weight": 18.10,
         "Biological Infection": 2.66,
         "Psy-Emissions": 6.32
+    },
+    {
+        "name": "Red Tallow",
+        "Quality": 160,
+        "Health Regeneration": 5.2,
+        "Healing Effectiveness": 28.29,
+        "Radiation": -1.25,
+        "Temperature": 2.66
     }
     #{
     #    "name": "Green Bubblegum",
@@ -480,12 +503,13 @@ armors = [
     {"armor": "RAPS", "Bullet Resistence": 297.88, "Periodic Healing": 2},
     {"armor": "Saturn", "Bullet Resistence": 261.48,"Periodic Healing": 0},
     {"armor": "JD ZIVCAS", "Bullet Resistence": 275.75,"Periodic Healing": 3},
-
+    {"armor": "Rigel", "Bullet Resistence": 335.58, "Periodic Healing": 0}
 ]
 
 weapons = [
     {"weapon": "AK-15", "damage": 64.88, "rof": 600},
-    {"weapon": "QBZ", "damage": 51.75, "rof": 800}
+    {"weapon": "QBZ", "damage": 51.75, "rof": 800},
+    {"weapon": "X95 (A)", "damage": 44.13, "rof": 950}
 ]
 
 medkit = [
@@ -771,6 +795,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
