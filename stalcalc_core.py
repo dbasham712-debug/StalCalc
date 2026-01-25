@@ -642,11 +642,11 @@ def run_calc(
     # Items scaled by container effectiveness
     adj_bullet = bullet * EFF
     adj_vital  = vital  * EFF
-    adj_psy    = psy    * EFF
-    adj_rad    = rad    * EFF
-    adj_bio    = bio    * EFF
-    adj_frost  = frost  * EFF
-    adj_temp   = temp   * EFF
+    adj_psy    = psy    #* EFF
+    adj_rad    = rad    #* EFF
+    adj_bio    = bio    #* EFF
+    adj_frost  = frost  #* EFF
+    adj_temp   = temp   #* EFF
     adj_heal   = heal   * EFF
     adj_perh   = perh   * EFF
     adj_hreg   = hregen * EFF
@@ -803,6 +803,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
