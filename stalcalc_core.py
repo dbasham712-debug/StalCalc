@@ -74,6 +74,14 @@ red_items = [
         "Bullet Resistance": 14.14,
         "Psy-Emissions": 8.49
     },
+    {
+        "name": "Red Opal",
+        "Quality": 160,
+        "Vitality": -2.9,
+        "Bullet Resistance": 53.66,
+        "Temperature": 0.8,
+        "Frost": 1
+    },
     #{
     #    "name": "Red Leaded Glass",
     #    "Quality": 160,
@@ -795,6 +803,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
