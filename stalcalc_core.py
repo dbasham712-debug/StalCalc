@@ -80,7 +80,7 @@ red_items = [
         "Vitality": -2.9,
         "Bullet Resistance": 53.66,
         "Temperature": 0.8,
-        "Frost": 1
+        "Frost": -1
     },
     #{
     #    "name": "Red Leaded Glass",
@@ -803,6 +803,7 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
+
 
 
 
