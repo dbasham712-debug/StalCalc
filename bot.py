@@ -42,11 +42,12 @@ WEAPON_CHOICES = [
 COLOR_CHOICES = [
     app_commands.Choice(name="red", value="red"),
     app_commands.Choice(name="pink", value="pink"),
+    app_commands.Choice(name="gold", value="gold"),
 ]
 # ---- bring in your data + calculator ----
 from stalcalc_core import (
     df_armors, df_containers, df_medkits, df_weapons,
-    df_red_items, df_pink_items,
+    df_red_items, df_pink_items, df_gold_items,
     run_calc
 )
 GUILD_ID = 414969988374462466
@@ -116,7 +117,12 @@ async def calc_cmd(
     hit_frac      = hit / 100.0
     use_buffs_bool  = (use_buffs.value == "yes")
     use_limits_bool = (use_limits.value == "yes")
-    items_df = df_red_items if color.value == "red" else df_pink_items
+    if color.value == "red":
+        items_df = df_red_items
+    elif color.value == "pink":
+        items_df = df_pink_items
+    else:  # "gold"
+        items_df = df_gold_items
 
     try:
         output_text = run_calc(
@@ -152,7 +158,6 @@ if not TOKEN:
     raise SystemExit("Set DISCORD_TOKEN environment variable.")
 
 client.run(TOKEN)
-
 
 
 
