@@ -4,6 +4,212 @@ import numpy as np
 import time
 from typing import Optional
 # ===================== DATA =====================
+MAX_ITEM_COUNTS = {
+    "175 Bubblegum": 1,
+}
+gold_items = [
+    {
+        "name": "175 Gum",
+        "Health Regeneration": 4.32,
+        "Radiation": 6.92,
+        "Temperature": 2.91,
+    },
+    {
+        "name": "175 Hoop",
+        "Health Regeneration": 9.1,
+        "Bullet Resistance": 27.76,
+        "Psy-Emissions": -2.5
+    },
+    {
+        "name": "168 Hoop",
+        "Health Regeneration": 8.74,
+        "Bullet Resistance": 26.64,
+        "Psy-Emissions": -2.33
+    },
+    {
+        "name": "175 Dark Crystal",
+        "Health Regeneration": 6.83,
+        "Radiation": 2.91,
+        "Psy-Emissions": -0.63,
+        "Vitality": 2.28
+    },
+    {
+        "name": "168 Dark Crystal",
+        "Health Regeneration": 6.55,
+        "Radiation": 2.8,
+        "Psy-Emissions": -0.58,
+        "Vitality": 2.18
+    },
+    {
+        "name": "160 Timber",
+        "Bullet Resistance": 22.46,
+        "Radiation": 2.66,
+        "Temperature": -0.63,
+        "Health Regeneration": 3.95
+    },
+    {
+        "name": "159 Timber",
+        "Bullet Resistance": 22.32,
+        "Radiation": 2.65,
+        "Temperature": -0.62,
+        "Health Regeneration": 3.93
+    },
+    {
+        "name": "160 Snares",
+        "Bullet Resistance": 14.14,
+        "Psy-Emissions": 8.49
+    },
+    {
+        "name": "175 Opal",
+        "Vitality": -2.9,
+        "Bullet Resistance": 58.7,
+        "Temperature": 0.87,
+        "Frost": -1
+    },
+    {
+        "name": "170 Opal",
+        "Vitality": -2.76,
+        "Bullet Resistance": 57.02,
+        "Temperature": 0.85,
+        "Frost": -0.95
+    },
+    {
+        "name": "165 Opal",
+        "Vitality": -2.61,
+        "Bullet Resistance": 55.34,
+        "Temperature": 0.82,
+        "Frost": -0.9
+    },
+    {
+        "name": "175 Stress Fest",
+        "Healing Effectiveness": 30.94,
+        "Temperature": -1.25,
+    },
+    {
+        "name": "175 Radiator",
+        "Temperature": 6.92,
+        "Psy-Emissions": 2.91
+    },
+    {
+        "name": "175 Gills",
+        "Vitality": 4.1,
+        "Health Regeneration": 9.1,
+        "Radiation": -2.5,
+    },
+    {
+        "name": "168 Gills",
+        "Vitality": 3.93,
+        "Health Regeneration": 8.74,
+        "Radiation": -2.33,
+    },
+    {
+        "name": "175 Scrubber",
+        "Healing Effectiveness": 16.38,
+        "Radiation": 2.91,
+        "Biological Infection": 6.92,
+    },
+    {
+        "name": "175 Fossil",
+        "Vitality": 6.37,
+        "Biological Infection": -2.50,
+        "Periodic Healing": 1.59
+    },
+    {
+        "name": "167 Fossil",
+        "Vitality": 6.08,
+        "Biological Infection": -2.3,
+        "Periodic Healing": 1.52
+    },
+    {
+        "name": "175 Shard",
+        "Vitality": 5.92,
+        "Healing Effectiveness": 24.57,
+        "Biological Infection": -2.5,
+    },
+    {
+        "name": "168 Shard",
+        "Vitality": 5.68,
+        "Healing Effectiveness": 23.59,
+        "Biological Infection": -2.33,
+    },
+    {
+        "name": "175 Atom",
+        "Radiation": 2.91,
+        "Temperature": 2.91,
+        "Biological Infection": 2.91,
+        "Psy-Emissions": 2.91,
+        "Vitality": 2.28
+    },
+    {
+        "name": "175 Cursed Rose",
+        "Bullet Resistance": 35.26,
+        "Radiation": -1.25,
+    },
+    {
+        "name": "175 Proto-Onion",
+        "Healing Effectiveness": 14.56,
+        "Radiation": 6.92,
+        "Health Regeneration": 2.96
+    },
+    {
+        "name": "175 Veiner",
+        "Bullet Resistance": 24.57,
+        "Radiation": -0.63,
+        "Psy-Emissions": 2.91,
+    },
+    {
+        "name": "175 Prism",
+        "Bullet Resistance": 44.14,
+        "Psy-Emissions": -2.5,
+    },
+    {
+        "name": "168 Prism",
+        "Bullet Resistance": 42.37,
+        "Psy-Emissions": -2.33,
+    },
+    {
+        "name": "175 Rime",
+        "Bullet Resistance": 30.71,
+        "Temperature": 0.44,
+        "Frost": -0.5,
+    },
+    {
+        "name": "175 Chilly",
+        "Vitality": 8.19,
+        "Temperature": 0.87,
+        "Frost": -1,
+    },
+    {
+        "name": "175 Heel",
+        "Healing Effectiveness": 46.41,
+        "Temperature": 0.87,
+        "Frost": -1,
+    },
+    {
+        "name": "175 Firebird",
+        "Health Regeneration": 5.92,
+        "Healing Effectiveness": 30.94,
+        "Temperature": -1.25,
+    },
+    {
+        "name": "175 Viburnum Branch",
+        "Vitality": 4.55,
+        "Healing Effectiveness": 38.9,
+        "Radiation": -2.5,
+    },
+    {
+        "name": "168 Viburnum Branch",
+        "Vitality": 4.37,
+        "Healing Effectiveness": 37.35,
+        "Radiation": -2.33,
+    },
+    {
+        "name": "175 Bubblegum",
+        "Bullet Resistance": 58.7,
+        "Temperature": -2.5,
+    },
+]
+
 red_items = [
     {
         "name": "Red Gum",
@@ -13,13 +219,13 @@ red_items = [
         "Temperature": 2.66,
         "Reaction to chemical burns": 9.78
     },
-    {
-        "name": "Red Dumbbell",
-        "Quality": 160,
-        "Vitality": 1.25,
-        "Healing Effectiveness": 32.03,
-        "Radiation": -2.5
-    },
+    # {
+    #     "name": "Red Dumbbell",
+    #     "Quality": 160,
+    #     "Vitality": 1.25,
+    #     "Healing Effectiveness": 32.03,
+    #     "Radiation": -2.5
+    # },
     {
         "name": "Red Hoop",
         "Quality": 160,
@@ -225,24 +431,24 @@ red_items = [
         "Psy-Emissions": -2.5,
         "Stamina Regeneration": 7.49
     },
-    {
-        "name": "Red Scallop",
-        "Quality": 175,
-        "Bullet Resistance": 28.08,
-        "Explosion Protection": 21.63,
-        "Radiation": -1.25,
-        "Bleeding": -1.87
-    },
-    {
-        "name": "Red Frame",
-        "Quality": 160,
-        "Carry Weight": 25.79,
-        "Stamina Regeneration": 6.24,
-        "Radiation": 2.66,
-        "Temperature": 2.66,
-        "Psy-Emissions": 2.66,
-        "Biological Infection": 2.66
-    },
+    # {
+    #     "name": "Red Scallop",
+    #     "Quality": 175,
+    #     "Bullet Resistance": 28.08,
+    #     "Explosion Protection": 21.63,
+    #     "Radiation": -1.25,
+    #     "Bleeding": -1.87
+    # },
+    # {
+    #     "name": "Red Frame",
+    #     "Quality": 160,
+    #     "Carry Weight": 25.79,
+    #     "Stamina Regeneration": 6.24,
+    #     "Radiation": 2.66,
+    #     "Temperature": 2.66,
+    #     "Psy-Emissions": 2.66,
+    #     "Biological Infection": 2.66
+    # },
     {
         "name": "Red Rime",
         "Quality": 160,
@@ -286,14 +492,14 @@ red_items = [
         "Radiation": -2.5,
         "Stamina": 33.7
     },
-    {
-        "name": "Red Transformer",
-        "Quality": 160,
-        "Stamina": 38.69,
-        "Carry Weight": 18.10,
-        "Biological Infection": 2.66,
-        "Psy-Emissions": 6.32
-    },
+    # {
+    #     "name": "Red Transformer",
+    #     "Quality": 160,
+    #     "Stamina": 38.69,
+    #     "Carry Weight": 18.10,
+    #     "Biological Infection": 2.66,
+    #     "Psy-Emissions": 6.32
+    # },
     {
         "name": "Red Tallow",
         "Quality": 160,
@@ -491,7 +697,7 @@ pink_items = [
 containers = [
     {"container": "Barrel",  "capacity": 7, "Internal Protection": 60, "Effectiveness": 93, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Overton", "capacity": 6, "Internal Protection": 60, "Effectiveness": 100, "Healing Effectiveness": 31.3, "Frost": 0, "Psy-Emissions": 0},
-    {"container": "BD6", "capacity": 6, "Internal Protection": 79, "Effectiveness": 100, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
+    {"container": "BD6", "capacity": 6, "Internal Protection": 78.5, "Effectiveness": 100, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Sheaf", "capacity": 7, "Internal Protection": 60, "Effectiveness": 97, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Chitin", "capacity": 6, "Internal Protection": 60, "Effectiveness": 115, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "SMC", "capacity": 4, "Internal Protection": 95, "Effectiveness": 120, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
@@ -549,7 +755,7 @@ def prepare_items_df(df: pd.DataFrame) -> pd.DataFrame:
     percent_like = [c for c in num_cols if c not in absolute_cols]
     df[percent_like] = df[percent_like].fillna(0.0) / 100.0
     return df
-
+df_gold_items = prepare_items_df(norm_cols(pd.DataFrame(gold_items)))
 df_red_items  = prepare_items_df(norm_cols(pd.DataFrame(red_items)))
 df_pink_items = prepare_items_df(norm_cols(pd.DataFrame(pink_items)))
 df_containers = norm_cols(pd.DataFrame(containers))
@@ -626,6 +832,11 @@ def run_calc(
 
     # ===== Build arrays from chosen item set =====
     names  = df_items["name"].tolist()
+    max_by_idx = {}
+    name_to_idx = {nm: i for i, nm in enumerate(names)}
+    for nm, mx in MAX_ITEM_COUNTS.items():
+        if nm in name_to_idx:
+            max_by_idx[name_to_idx[nm]] = int(mx)
     M      = len(names)
 
     bullet = df_items["bullet_resistance"].fillna(0.0).to_numpy(float)       # flat
@@ -668,8 +879,22 @@ def run_calc(
     best = None  # (ttd, counts, total_bullet, vitality_mult, totals..., pipeline metrics)
     BASE_HEALTH_REGEN = 0.025  # 2.5% base HR
 
+    attempted = 0
+    valid = 0
+    best_updates = 0
+    last_print = time.time()
+    PRINT_EVERY_SEC = 1.0  # update once per second
+
     for idx, counts in enumerate(compositions(K, M)):
+        attempted += 1
         counts_arr = np.array(counts, dtype=float)
+        violated = False
+        for i, mx in max_by_idx.items():
+            if counts[i] > mx:
+                violated = True
+                break
+        if violated:
+            continue
 
         # Totals for this combo
         items_bullet = float(np.dot(counts_arr, adj_bullet))
@@ -678,18 +903,35 @@ def run_calc(
         vitality_mult = 1.0 + float(np.dot(counts_arr, adj_vital)) + buff_vit
         DTK = (total_bullet + 100.0) * vitality_mult  # Effective health
 
-        total_psy   = float(np.dot(counts_arr, adj_psy))   + cont_psy
-        total_rad   = float(np.dot(counts_arr, adj_rad))   + cont_rad
-        total_bio   = float(np.dot(counts_arr, adj_bio))   + cont_bio
-        total_frost = float(np.dot(counts_arr, adj_frost)) + cont_frost
-        total_temp  = float(np.dot(counts_arr, adj_temp))  + cont_temp
+        # ---- CAPS: split item vs container ----
+        items_psy = float(np.dot(counts_arr, adj_psy))
+        items_rad = float(np.dot(counts_arr, adj_rad))
+        items_bio = float(np.dot(counts_arr, adj_bio))
+        items_frost = float(np.dot(counts_arr, adj_frost))
+        items_temp = float(np.dot(counts_arr, adj_temp))
+
+        def apply_ip_items(val, ip):
+            return val * (1 - ip) if val < 0 else val
+
+        eff_items_psy = apply_ip_items(items_psy, IP)
+        eff_items_rad = apply_ip_items(items_rad, IP)
+        eff_items_bio = apply_ip_items(items_bio, IP)
+        eff_items_frost = items_frost
+        eff_items_temp = apply_ip_items(items_temp, IP)
+
+        # container caps are NEVER reduced by IP
+        total_psy = eff_items_psy + cont_psy
+        total_rad = eff_items_rad + cont_rad
+        total_bio = eff_items_bio + cont_bio
+        total_frost = eff_items_frost + cont_frost
+        total_temp = eff_items_temp + cont_temp
 
         # Caps
         if ((total_psy < PSY_LIMIT) or (total_rad < RAD_LIMIT) or
             (total_bio < BIO_LIMIT) or (total_frost < FROST_LIMIT) or
             (total_temp < TEMP_LIMIT)):
             continue
-
+        valid += 1
         # ---- DAMAGE PIPELINE ----
         D_raw = raw_dps
 
@@ -718,6 +960,7 @@ def run_calc(
         ttd = float('inf') if net_dps <= 0.0 else DTK / net_dps
 
         if (best is None) or (ttd > best[0]):
+            best_updates += 1
             best = (
                 ttd, counts, total_bullet, vitality_mult,
                 total_HE, total_HR, PH_total, PH_effective_pct,
@@ -727,9 +970,17 @@ def run_calc(
             )
 
         # optional progress pulse
-        if idx % 1000 == 0 and idx > 0:
-            elapsed = time.time() - start_time
-            print(f"Checked {idx:,} combos in {elapsed:.1f} seconds...", end="\r")
+        now = time.time()
+        if now - last_print >= PRINT_EVERY_SEC:
+            elapsed = now - start_time
+            rate = attempted / elapsed if elapsed > 0 else 0.0
+            print(
+                f"Attempted: {attempted:,} | Valid: {valid:,} | Best updates: {best_updates:,} | "
+                f"{rate:,.0f} combos/s | Elapsed: {elapsed:.1f}s",
+                end="\r",
+                flush=True
+            )
+            last_print = now
 
     # ----- Build Output -----
     if best is None:
@@ -803,7 +1054,6 @@ def run_calc(
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
     return "\n".join(lines)
-
 
 
 
