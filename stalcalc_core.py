@@ -6,8 +6,21 @@ from typing import Optional
 # ===================== DATA =====================
 MAX_ITEM_COUNTS = {
     "175 Bubblegum": 1,
+    "Purple Bubblegum": 1,
 }
 gold_items = [
+    {
+        "name": "175 Sun",
+        "Health Regeneration": 4.78,
+        "Vitality": 5.92,
+        "Temperature": -2.5,
+    },
+    {
+        "name": "168 Sun",
+        "Health Regeneration": 4.59,
+        "Vitality": 5.68,
+        "Temperature": -2.33,
+    },
     {
         "name": "175 Gum",
         "Health Regeneration": 4.32,
@@ -55,7 +68,7 @@ gold_items = [
         "Health Regeneration": 3.93
     },
     {
-        "name": "160 Snares",
+        "name": "160 Peg-Top",
         "Bullet Resistance": 14.14,
         "Psy-Emissions": 8.49
     },
@@ -138,7 +151,7 @@ gold_items = [
         "Temperature": 2.91,
         "Biological Infection": 2.91,
         "Psy-Emissions": 2.91,
-        "Vitality": 2.28
+        "Vitality": 4.55
     },
     {
         "name": "175 Cursed Rose",
@@ -208,9 +221,73 @@ gold_items = [
         "Bullet Resistance": 58.7,
         "Temperature": -2.5,
     },
+    {
+        "name": "175 Static",
+        "Bullet Resistance": 30.71,
+        "Radiation": -2.5
+    },
+    {
+        "name": "168 Static",
+        "Bullet Resistance": 29.48,
+        "Radiation": -2.33
+    },
+    {
+        "name": "175 Pumpkin",
+        "Radiation": 9.28,
+        "Vitality": 2.28
+    },
+    {
+        "name": "175 Cone",
+        "Quality": 160,
+        "Temperature": 9.28,
+        "Healing Effectiveness": 13.65,
+    },
+    {
+        "name": "175 Magma",
+        "Quality": 160,
+        "Vitality": 4.78,
+        "Bullet Resistance": 10.01,
+        "Temperature": -2.5
+    },
+    {
+        "name": "168 Magma",
+        "Quality": 160,
+        "Vitality": 4.59,
+        "Bullet Resistance": 9.61,
+        "Temperature": -2.33
+    },
 ]
 
 red_items = [
+    {
+        "name": "Red Static",
+        "Bullet Resistance": 28.08,
+        "Radiation": -2.5
+    },
+    {
+        "name": "Red Pumpkin",
+        "Radiation": 8.49,
+        "Vitality": 2.08
+    },
+    {
+        "name": "Red Cone",
+        "Quality": 160,
+        "Temperature": 8.49,
+        "Healing Effectiveness": 12.48,
+    },
+    {
+        "name": "Red Magma",
+        "Quality": 160,
+        "Vitality": 4.37,
+        "Bullet Resistance": 9.15,
+        "Temperature": -2.5
+    },
+    {
+        "name": "Red Loop",
+        "Quality": 160,
+        "Biological Infection": 8.49,
+        "Health Regeneration": 3.33
+    },
     {
         "name": "Red Gum",
         "Quality": 160,
@@ -219,13 +296,12 @@ red_items = [
         "Temperature": 2.66,
         "Reaction to chemical burns": 9.78
     },
-    # {
-    #     "name": "Red Dumbbell",
-    #     "Quality": 160,
-    #     "Vitality": 1.25,
-    #     "Healing Effectiveness": 32.03,
-    #     "Radiation": -2.5
-    # },
+    {
+        "name": "Red Sun",
+        "Health Regeneration": 4.37,
+        "Vitality": 5.41,
+        "Temperature": -2.5,
+    },
     {
         "name": "Red Hoop",
         "Quality": 160,
@@ -275,39 +351,27 @@ red_items = [
         "Biological Infection": 2.66
     },
     {
-        "name": "Red Snares",
+        "name": "Red Peg-Top",
         "Quality": 160,
         "Bullet Resistance": 14.14,
         "Psy-Emissions": 8.49
     },
     {
-        "name": "Red Opal",
+        "name": "Pink Opal",
         "Quality": 160,
         "Vitality": -2.9,
-        "Bullet Resistance": 53.66,
-        "Temperature": 0.8,
+        "Bullet Resistance": 48.63,
+        "Temperature": 0.72,
         "Frost": -1
     },
-    #{
-    #    "name": "Red Leaded Glass",
-    #    "Quality": 160,
-    #    "Radiation": 2.66,
-    #    "Temperature": 0.40,
-    #    "Psy-Emissions": 2.66,
-    #    "Frost": -0.50,
-    #    "Burning": -0.62,
-    #    "Reaction to burns": 4.58,
-    #    "Vitality": 1.25
-    #},
-    #{
-    #    "name": "Red Onion",
-    #    "Quality": 160,
-    #    "Stamina": 21.63,
-    #    "Bullet Resistance": 19.55,
-    #    "Radiation": -0.63,
-    #    "Psy-Emissions": 2.66,
-    #    "Bleeding Protection": 9.57
-    #},
+    # {
+    #     "name": "Red Opal",
+    #     "Quality": 160,
+    #     "Vitality": -2.9,
+    #     "Bullet Resistance": 53.66,
+    #     "Temperature": 0.8,
+    #     "Frost": -1
+    # },
     {
         "name": "Red Stress Fest",
         "Quality": 160,
@@ -316,38 +380,6 @@ red_items = [
         "Temperature": -1.25,
         "Carry Weight": 18.10
     },
-    #{
-    #    "name": "Red Phlegm",
-    #    "Quality": 160,
-    #    "Healing Effectiveness": 23.09,
-    #    "Bleeding Protection": 15.81,
-    #    "Biological Infection": -1.25,
-    #    "Bleeding": -1.66
-    #},
-    #{
-    #    "name": "Red Lard",
-    #    "Quality": 160,
-    #    "Health Regeneration": 6.24,
-    #    "Healing Effectiveness": 16.22,
-    #    "Radiation": -1.25,
-    #    "Reaction to chemical burns": 5.2
-    #},
-    #{
-    #    "name": "Red Heart",
-    #    "Quality": 160,
-    #    "Health Regeneration": 7.07,
-    #    "Stamina Regeneration": 7.07,
-    #    "Radiation": -1.25,
-    #    "Healing Effectiveness": 14.14
-    #},
-    #{
-    #    "name": "Red Rose",
-    #    "Quality": 160,
-    #    "Bullet Resistance": 24.13,
-    #    "Explosion Protection": 18.72,
-    #    "Psy-Emissions": -1.25,
-    #    "Carry Weight": 13.52
-    #},
     {
         "name": "Red Radiator",
         "Quality": 160,
@@ -395,8 +427,7 @@ red_items = [
         "Temperature": 2.66,
         "Biological Infection": 2.66,
         "Psy-Emissions": 2.66,
-        "Bleeding": -2.50,
-        "Vitality": 2.08
+        "Vitality": 4.16
     },
     {
         "name": "Red Cursed Rose",
@@ -507,7 +538,7 @@ red_items = [
         "Healing Effectiveness": 28.29,
         "Radiation": -1.25,
         "Temperature": 2.66
-    }
+    },
     #{
     #    "name": "Green Bubblegum",
     #    "Quality": 115,
@@ -515,6 +546,12 @@ red_items = [
     #    "Explosion Protection": 29.75,
     #    "Temperature": -2.50
     #}
+    # {
+    #     "name": "Purple Bubblegum",
+    #     "Quality": 115,
+    #     "Bullet Resistance": 48.63,
+    #     "Temperature": -2.50
+    #  }
 ]
 pink_items = [
     {
@@ -696,12 +733,12 @@ pink_items = [
 
 containers = [
     {"container": "Barrel",  "capacity": 7, "Internal Protection": 60, "Effectiveness": 93, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
-    {"container": "Overton", "capacity": 6, "Internal Protection": 60, "Effectiveness": 100, "Healing Effectiveness": 31.3, "Frost": 0, "Psy-Emissions": 0},
+    {"container": "Overton", "capacity": 6, "Internal Protection": 60, "Effectiveness": 100, "Healing Effectiveness": 33.3, "Frost": 0, "Psy-Emissions": 0},
     {"container": "BD6", "capacity": 6, "Internal Protection": 78.5, "Effectiveness": 100, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Sheaf", "capacity": 7, "Internal Protection": 60, "Effectiveness": 97, "Frost": -1, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "Chitin", "capacity": 6, "Internal Protection": 60, "Effectiveness": 115, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
     {"container": "SMC", "capacity": 4, "Internal Protection": 95, "Effectiveness": 120, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
-    {"container": "Z6", "capacity": 6, "Internal Protection": 75, "Effectiveness": 100, "Frost": 2.5, "Healing Effectiveness": 0, "Psy-Emissions": -0.5},
+    {"container": "Z6", "capacity": 6, "Internal Protection": 75, "Effectiveness": 102.5, "Frost": 2.5, "Healing Effectiveness": 0, "Psy-Emissions": -0.5},
     {"container": "BD6u", "capacity": 6, "Internal Protection": 78.5, "Effectiveness": 114, "Frost": 0, "Healing Effectiveness": 0, "Psy-Emissions": 0},
 ]
 
@@ -721,20 +758,23 @@ armors = [
 ]
 
 weapons = [
-    {"weapon": "AK-15", "damage": 64.88, "rof": 600},
-    {"weapon": "QBZ", "damage": 51.75, "rof": 800},
-    {"weapon": "X95 (A)", "damage": 44.13, "rof": 950}
+    {"weapon": "AK-15", "damage": 57.88, "rof": 600},
+    {"weapon": "QBZ", "damage": 46.63, "rof": 800},
+    {"weapon": "X95 (A)", "damage": 40.25, "rof": 950}
 ]
 
 medkit = [
-    {"name": "Blue Medkit", "Periodic Healing": 6.0,  "Duration": 10.0},
-    {"name": "STOMP",       "Periodic Healing": 12.6, "Duration": 5.0},
-    {"name": "STRIKE",      "Periodic Healing": 10.0, "Duration": 5.0},
-    {"name": "Green Medkit", "Periodic Healing": 7.0, "Duration": 12.0}
+    {"name": "Blue Medkit", "Periodic Healing": 4.5,  "Duration": 12.0, "Health Regeneration": 6.4},
+    {"name": "STOMP",       "Periodic Healing": 9.5, "Duration": 6.0,  "Health Regeneration": 0.0},
+    {"name": "STRIKE",      "Periodic Healing": 8.4, "Duration": 6.0,  "Health Regeneration": 0.0},
+    {"name": "Green Medkit","Periodic Healing": 5.9,  "Duration": 12.0, "Health Regeneration": 7.4},
 ]
+
 # ===================== NORMALIZE =====================
 def norm_cols(df: pd.DataFrame) -> pd.DataFrame:
     return df.rename(columns=lambda c: c.strip().lower().replace(" ", "_"))
+
+
 
 def prepare_items_df(df: pd.DataFrame) -> pd.DataFrame:
     """Ensure required columns exist and convert % → fractions for the correct fields."""
@@ -762,7 +802,8 @@ df_containers = norm_cols(pd.DataFrame(containers))
 df_armors     = norm_cols(pd.DataFrame(armors))
 df_weapons    = norm_cols(pd.DataFrame(weapons))
 df_medkits    = norm_cols(pd.DataFrame(medkit))
-
+if "health_regeneration" not in df_medkits.columns:
+    df_medkits["health_regeneration"] = 0.0
 # unify armor bullet key
 if "bullet_resistence" in df_armors.columns and "bullet_resistance" not in df_armors.columns:
     df_armors = df_armors.rename(columns={"bullet_resistence": "bullet_resistance"})
@@ -825,10 +866,16 @@ def run_calc(
     armor_ph_pct = float(chosen_armor.get("periodic_healing", 0.0)) / 100.0  # fraction
 
     # ===== Default buffs ===== (adjust to your latest values if needed)
-    buff_vit      = 0.13  if use_buffs else 0.0   # +13% Vitality
-    buff_he       = 0.321 if use_buffs else 0.0   # +32.1% Healing Effectiveness
-    buff_hr       = 0.12  if use_buffs else 0.0   # +12% Health Regeneration
-    buff_br_flat  = 9.9   if use_buffs else 0.0   # +9.9 flat Bullet Resistance
+    # Biopatch, Brekki, Schizo
+    buff_vit      = 0.066  if use_buffs else 0.0   # +13% Vitality                         3.3% Brekki 3.3% Schizo 3.1% Anom Mandrain
+    buff_he       = 0.226 if use_buffs else 0.0   # +32.1% Healing Effectiveness          5.1% Biopatch  17.5% Brekki  20.6% Lemongrass 19.6% Anom Mandrain
+    buff_hr       = 0.05  if use_buffs else 0.0   # +12% Health Regeneration              1.3% Biopatch  3.7% Brekki   5.3% Lemongrass
+    buff_br_flat  = 23.3   if use_buffs else 0.0   # +9.9 flat Bullet Resistance           23.3 Lemongrass & Schizo
+    # Biopatch, Brekki, Lemongrass
+    #buff_vit = 0.033 if use_buffs else 0.0
+    #buff_he = 0.432 if use_buffs else 0.0
+    #buff_hr = 0.103 if use_buffs else 0.0
+    #buff_br_flat = 23.3 if use_buffs else 0.0
 
     # ===== Build arrays from chosen item set =====
     names  = df_items["name"].tolist()
@@ -940,7 +987,8 @@ def run_calc(
 
         # Healing Effectiveness & Health Regen
         total_HE = float(np.dot(counts_arr, adj_heal)) + cont_heal + buff_he
-        total_HR = BASE_HEALTH_REGEN + float(np.dot(counts_arr, adj_hreg)) + buff_hr
+        medkit_HR = float(chosen_medkit.get("health_regeneration", 0.0)) / 100.0
+        total_HR = BASE_HEALTH_REGEN + float(np.dot(counts_arr, adj_hreg)) + buff_hr + medkit_HR
 
         # Periodic Healing (as % DPS reduction), includes armor & medkit
         items_PH  = float(np.dot(counts_arr, adj_perh))
@@ -1039,6 +1087,7 @@ def run_calc(
     lines.append("\nHealing stats:")
     lines.append(f"  Healing Effectiveness (HE): {total_HE*100:.2f}%  (multiplier = {1+total_HE:.3f})")
     lines.append(f"  Health Regeneration (HR):   {total_HR*100:.2f}%")
+    lines.append(f"  Medkit HR: {medkit_HR * 100:.2f}%")
     lines.append(f"  Periodic Healing (PH raw):  {PH_total*100:.2f}%")
     lines.append(f"  PH effective (DPS reduction): {PH_effective_pct*100:.2f}%")
 
