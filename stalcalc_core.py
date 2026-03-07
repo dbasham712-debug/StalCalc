@@ -3,6 +3,61 @@ import pandas as pd
 import numpy as np
 import time
 from typing import Optional
+
+
+# - ATTEMPTING TO USE CACHING
+import hashlib
+import json
+import os
+from typing import Optional
+
+CACHE_FILE = "stalcalc_cache.json"
+
+# simple persistent cache
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        CALC_CACHE = json.load(f)
+else:
+    CALC_CACHE = {}
+def _get_items_version(df_items: pd.DataFrame) -> str:
+    """
+    Creates a fingerprint of the item pool so cache invalidates automatically
+    if you change artifact stats later.
+    """
+    data = df_items.fillna(0).sort_index(axis=1).to_dict(orient="records")
+    raw = json.dumps(data, sort_keys=True)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _make_cache_key(
+    armor_idx: int,
+    container_idx: int,
+    medkit_idx: int,
+    weapon_idx: int,
+    hit_frac: float,
+    use_buffs: bool,
+    use_limits: bool,
+    df_items: pd.DataFrame,
+) -> str:
+    payload = {
+        "armor_idx": armor_idx,
+        "container_idx": container_idx,
+        "medkit_idx": medkit_idx,
+        "weapon_idx": weapon_idx,
+        "hit_frac": round(hit_frac, 6),
+        "use_buffs": use_buffs,
+        "use_limits": use_limits,
+        "items_version": _get_items_version(df_items),
+    }
+    raw = json.dumps(payload, sort_keys=True)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _save_cache() -> None:
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(CALC_CACHE, f, indent=2)
+##################################################
+
 # ===================== DATA =====================
 MAX_ITEM_COUNTS = {
     "175 Bubblegum": 1,
@@ -835,6 +890,20 @@ def run_calc(
     # Pick item set
     df_items = df_items_override if df_items_override is not None else df_red_items
 
+    cache_key = _make_cache_key(
+        armor_idx=armor_idx,
+        container_idx=container_idx,
+        medkit_idx=medkit_idx,
+        weapon_idx=weapon_idx,
+        hit_frac=hit_frac,
+        use_buffs=use_buffs,
+        use_limits=use_limits,
+        df_items=df_items,
+    )
+
+    if cache_key in CALC_CACHE:
+        return CALC_CACHE[cache_key] + "\n\n⚡ Returned from cache."
+
     chosen_armor     = df_armors.iloc[armor_idx]
     chosen_container = df_containers.iloc[container_idx]
     chosen_weapon    = df_weapons.iloc[weapon_idx]
@@ -998,7 +1067,8 @@ def run_calc(
         PH_total  = items_PH + cont_PH + armor_PH + medkit_PH
 
         # PH scales by (1 + HE + 0.20 * HR); clamp
-        PH_effective_pct = PH_total * (1.0 + total_HE + 0.20 * total_HR)
+        PH_effective_pct = (PH_total * (1.0 + total_HE) + total_HR / 5)
+
         PH_effective_pct = max(0.0, min(PH_effective_pct, 0.99))
 
         # Final DPS after PH% reduction; BR already baked into DTK
@@ -1102,7 +1172,10 @@ def run_calc(
     elapsed = time.time() - start_time
     lines.append(f"\nDone! Search completed in {elapsed:.2f} seconds.")
 
-    return "\n".join(lines)
+    result = "\n".join(lines)
+    CALC_CACHE[cache_key] = result
+    _save_cache()
+    return result
 
 
 
